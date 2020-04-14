@@ -47,6 +47,8 @@ nnoremap <silent> <buffer> <Plug>(taskwarrior_decrease)        :<C-U>call taskwa
 vnoremap <silent> <buffer> <Plug>(taskwarrior_visual_done)     :call taskwarrior#action#visual('done')<CR>
 vnoremap <silent> <buffer> <Plug>(taskwarrior_visual_delete)   :call taskwarrior#action#visual('delete')<CR>
 vnoremap <silent> <buffer> <Plug>(taskwarrior_visual_select)   :call taskwarrior#action#visual('select')<CR>
+nnoremap <silent> <buffer> <Plug>(taskwarrior_tag_today)       :call taskwarrior#system_call(taskwarrior#data#get_uuid(), 'modify +today', '', 'echo')<CR>
+nnoremap <silent> <buffer> <Plug>(taskwarrior_tag_not_today)   :call taskwarrior#system_call(taskwarrior#data#get_uuid(), 'modify -today', '', 'echo')<CR>
 
 nmap <buffer> <F1>    <Plug>(taskwarrior_quickref)
 nmap <buffer> Q       <Plug>(taskwarrior_quit_all)
@@ -125,6 +127,8 @@ else
     vmap <silent> <buffer> d        <Plug>(taskwarrior_visual_done)
     vmap <silent> <buffer> D        <Plug>(taskwarrior_visual_delete)
     vmap <silent> <buffer> <Space>  <Plug>(taskwarrior_visual_select)
+    nmap <silent> <buffer> t        <Plug>(taskwarrior_tag_today)
+    nmap <silent> <buffer> T        <Plug>(taskwarrior_tag_not_today)
 
     command! -buffer TWAdd               :call taskwarrior#action#new()
     command! -buffer TWAnnotate          :call taskwarrior#action#annotate('add')
